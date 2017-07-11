@@ -2,10 +2,11 @@
 
 This Style Guide is a fork of the popular [AirBnB Javascript-Guide](https://github.com/airbnb/javascript). 
 
-This document contains guidelines for developers that want to work on the FraGOLE-Framework. The main intention of this guide is to ensure a good readbility and maintainability of the projects code.
+This document contains guidelines for developers who want to work on the FraGOLE-Framework. The main intention of this guide is to ensure a good readbility and maintainability of the projects code.
 
 ## Table of Contents
-
+  
+  1. [General](#general)
   1. [References](#references)
   1. [Objects](#objects)
   1. [Arrays](#arrays)
