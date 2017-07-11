@@ -27,18 +27,7 @@
   1. [Accessors](#accessors)
   1. [Events](#events)
   1. [jQuery](#jquery)
-  1. [ECMAScript 5 Compatibility](#ecmascript-5-compatibility)
-  1. [ECMAScript 6+ (ES 2015+) Styles](#ecmascript-6-es-2015-styles)
-  1. [Testing](#testing)
-  1. [Performance](#performance)
-  1. [Resources](#resources)
-  1. [In the Wild](#in-the-wild)
-  1. [Translation](#translation)
-  1. [The JavaScript Style Guide Guide](#the-javascript-style-guide-guide)
-  1. [Chat With Us About JavaScript](#chat-with-us-about-javascript)
-  1. [Contributors](#contributors)
-  1. [License](#license)
-
+  
 ## References
 
   <a name="references--prefer-const"></a><a name="2.1"></a>
@@ -103,32 +92,6 @@
     const item = {};
     ```
 
-  <a name="es6-computed-properties"></a><a name="3.4"></a>
-  - [3.2](#es6-computed-properties) Use computed property names when creating objects with dynamic property names.
-
-    > Why? They allow you to define all the properties of an object in one place.
-
-    ```javascript
-
-    function getKey(k) {
-      return `a key named ${k}`;
-    }
-
-    // bad
-    const obj = {
-      id: 5,
-      name: 'San Francisco',
-    };
-    obj[getKey('enabled')] = true;
-
-    // good
-    const obj = {
-      id: 5,
-      name: 'San Francisco',
-      [getKey('enabled')]: true,
-    };
-    ```
-
   <a name="es6-object-shorthand"></a><a name="3.5"></a>
   - [3.3](#es6-object-shorthand) Use object method shorthand. eslint: [`object-shorthand`](http://eslint.org/docs/rules/object-shorthand.html) jscs: [`requireEnhancedObjectLiterals`](http://jscs.info/rule/requireEnhancedObjectLiterals)
 
@@ -151,56 +114,6 @@
       },
     };
     ```
-
-  <a name="es6-object-concise"></a><a name="3.6"></a>
-  - [3.4](#es6-object-concise) Use property value shorthand. eslint: [`object-shorthand`](http://eslint.org/docs/rules/object-shorthand.html) jscs: [`requireEnhancedObjectLiterals`](http://jscs.info/rule/requireEnhancedObjectLiterals)
-
-    > Why? It is shorter to write and descriptive.
-
-    ```javascript
-    const lukeSkywalker = 'Luke Skywalker';
-
-    // bad
-    const obj = {
-      lukeSkywalker: lukeSkywalker,
-    };
-
-    // good
-    const obj = {
-      lukeSkywalker,
-    };
-    ```
-
-  <a name="objects--grouped-shorthand"></a><a name="3.7"></a>
-  - [3.5](#objects--grouped-shorthand) Group your shorthand properties at the beginning of your object declaration.
-
-    > Why? It’s easier to tell which properties are using the shorthand.
-
-    ```javascript
-    const anakinSkywalker = 'Anakin Skywalker';
-    const lukeSkywalker = 'Luke Skywalker';
-
-    // bad
-    const obj = {
-      episodeOne: 1,
-      twoJediWalkIntoACantina: 2,
-      lukeSkywalker,
-      episodeThree: 3,
-      mayTheFourth: 4,
-      anakinSkywalker,
-    };
-
-    // good
-    const obj = {
-      lukeSkywalker,
-      anakinSkywalker,
-      episodeOne: 1,
-      twoJediWalkIntoACantina: 2,
-      episodeThree: 3,
-      mayTheFourth: 4,
-    };
-    ```
-
   <a name="objects--quoted-props"></a><a name="3.8"></a>
   - [3.6](#objects--quoted-props) Only quote properties that are invalid identifiers. eslint: [`quote-props`](http://eslint.org/docs/rules/quote-props.html) jscs: [`disallowQuotedKeysInObjects`](http://jscs.info/rule/disallowQuotedKeysInObjects)
 
@@ -315,56 +228,6 @@
     const nodes = Array.from(foo);
     ```
 
-  <a name="arrays--callback-return"></a><a name="4.5"></a>
-  - [4.5](#arrays--callback-return) Use return statements in array method callbacks. It’s ok to omit the return if the function body consists of a single statement returning an expression without side effects, following [8.2](#arrows--implicit-return). eslint: [`array-callback-return`](http://eslint.org/docs/rules/array-callback-return)
-
-    ```javascript
-    // good
-    [1, 2, 3].map((x) => {
-      const y = x + 1;
-      return x * y;
-    });
-
-    // good
-    [1, 2, 3].map(x => x + 1);
-
-    // bad
-    const flat = {};
-    [[0, 1], [2, 3], [4, 5]].reduce((memo, item, index) => {
-      const flatten = memo.concat(item);
-      flat[index] = flatten;
-    });
-
-    // good
-    const flat = {};
-    [[0, 1], [2, 3], [4, 5]].reduce((memo, item, index) => {
-      const flatten = memo.concat(item);
-      flat[index] = flatten;
-      return flatten;
-    });
-
-    // bad
-    inbox.filter((msg) => {
-      const { subject, author } = msg;
-      if (subject === 'Mockingbird') {
-        return author === 'Harper Lee';
-      } else {
-        return false;
-      }
-    });
-
-    // good
-    inbox.filter((msg) => {
-      const { subject, author } = msg;
-      if (subject === 'Mockingbird') {
-        return author === 'Harper Lee';
-      }
-
-      return false;
-    });
-    ```
-
-**[⬆ back to top](#table-of-contents)**
 
 <a name="arrays--bracket-newline"></a>
   - [4.6](#arrays--bracket-newline) Use line breaks after open and before close array brackets if an array has multiple lines
@@ -510,34 +373,6 @@
     // good
     const errorMessage = 'This is a super long error that was thrown because of Batman. When you stop to think about how Batman had anything to do with this, you would get nowhere fast.';
     ```
-
-  <a name="es6-template-literals"></a><a name="6.4"></a>
-  - [6.3](#es6-template-literals) When programmatically building up strings, use template strings instead of concatenation. eslint: [`prefer-template`](http://eslint.org/docs/rules/prefer-template.html) [`template-curly-spacing`](http://eslint.org/docs/rules/template-curly-spacing) jscs: [`requireTemplateStrings`](http://jscs.info/rule/requireTemplateStrings)
-
-    > Why? Template strings give you a readable, concise syntax with proper newlines and string interpolation features.
-
-    ```javascript
-    // bad
-    function sayHi(name) {
-      return 'How are you, ' + name + '?';
-    }
-
-    // bad
-    function sayHi(name) {
-      return ['How are you, ', name, '?'].join();
-    }
-
-    // bad
-    function sayHi(name) {
-      return `How are you, ${ name }?`;
-    }
-
-    // good
-    function sayHi(name) {
-      return `How are you, ${name}?`;
-    }
-    ```
-
   <a name="strings--eval"></a><a name="6.5"></a>
   - [6.4](#strings--eval) Never use `eval()` on a string, it opens too many vulnerabilities. eslint: [`no-eval`](http://eslint.org/docs/rules/no-eval)
 
@@ -558,28 +393,6 @@
 **[⬆ back to top](#table-of-contents)**
 
 ## Functions
-
-  <a name="functions--declarations"></a><a name="7.1"></a>
-  - [7.1](#functions--declarations) Use named function expressions instead of function declarations. eslint: [`func-style`](http://eslint.org/docs/rules/func-style) jscs: [`disallowFunctionDeclarations`](http://jscs.info/rule/disallowFunctionDeclarations)
-
-    > Why? Function declarations are hoisted, which means that it’s easy - too easy - to reference the function before it is defined in the file. This harms readability and maintainability. If you find that a function’s definition is large or complex enough that it is interfering with understanding the rest of the file, then perhaps it’s time to extract it to its own module! Don’t forget to name the expression - anonymous functions can make it harder to locate the problem in an Error’s call stack. ([Discussion](https://github.com/airbnb/javascript/issues/794))
-
-    ```javascript
-    // bad
-    function foo() {
-      // ...
-    }
-
-    // bad
-    const foo = function () {
-      // ...
-    };
-
-    // good
-    const foo = function bar() {
-      // ...
-    };
-    ```
 
   <a name="functions--iife"></a><a name="7.2"></a>
   - [7.2](#functions--iife) Wrap immediately invoked function expressions in parentheses. eslint: [`wrap-iife`](http://eslint.org/docs/rules/wrap-iife.html) jscs: [`requireParenthesesAroundIIFE`](http://jscs.info/rule/requireParenthesesAroundIIFE)
@@ -3062,9 +2875,3 @@ TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 **[⬆ back to top](#table-of-contents)**
-
-## Amendments
-
-We encourage you to fork this guide and change the rules to fit your team’s style guide. Below, you may list some amendments to the style guide. This allows you to periodically update your style guide without having to deal with merge conflicts.
-
-# };
