@@ -1,4 +1,4 @@
-# JavaScript Style Guide
+# FraGOLE JavaScript Style Guide
 
 This Style Guide is a fork of the popular [AirBnB Javascript-Guide](https://github.com/airbnb/javascript) which was modified to better suite the FraGOLE-project (mostly rule-removal to get a leaner guide). 
 
