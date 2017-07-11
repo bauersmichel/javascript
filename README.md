@@ -32,7 +32,9 @@ This document contains guidelines for developers who want to work on the FraGOLE
   1. [Accessors](#accessors)
   1. [Events](#events)
   1. [jQuery](#jquery)
-  
+
+## General
+
 ## References
 
   <a name="references--prefer-const"></a><a name="2.1"></a>
