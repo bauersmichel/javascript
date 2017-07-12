@@ -1716,8 +1716,7 @@ This document contains guidelines for developers who want to work on the FraGOLE
 
 ## jQuery
 
-  <a name="jquery--cache"></a><a name="25.2"></a>
-  - [26.2](#jquery--cache) Cache jQuery lookups.
+  - Cache jQuery lookups.
 
     ```javascript
     // bad
