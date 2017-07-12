@@ -33,6 +33,12 @@ This document contains guidelines for developers who want to work on the FraGOLE
   1. [jQuery](#jquery)
 
 ## General
+  
+  - Keep it DRY and Dont Repeat Yourself (or others). Alway look up if the thing you want implement has already been done fully or partially (e.g. in ./lib). Try to reuse or extend existing code before writing new stuff.
+  
+  - KISS - Keep ist simple and stupid: if there are multiple solutions to a problem, always prefer the easiest. If you find an easier solution for exisiting implemetations, refactor it as long as the effort is acceptable.
+  
+  - Refactor your own code.
 
 ## References
 
