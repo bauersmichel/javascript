@@ -325,8 +325,7 @@ This document contains guidelines for developers who want to work on the FraGOLE
     }
     ```
 
-  <a name="functions--default-side-effects"></a><a name="7.8"></a>
-  - [7.8](#functions--default-side-effects) Avoid side effects with default parameters.
+  - Avoid side effects with default parameters.
 
     > Why? They are confusing to reason about.
 
@@ -342,8 +341,8 @@ This document contains guidelines for developers who want to work on the FraGOLE
     count();  // 3
     ```
 
-  <a name="functions--defaults-last"></a><a name="7.9"></a>
-  - [7.9](#functions--defaults-last) Always put default parameters last.
+
+  - Always put default parameters last.
 
     ```javascript
     // bad
@@ -357,8 +356,7 @@ This document contains guidelines for developers who want to work on the FraGOLE
     }
     ```
 
-  <a name="functions--constructor"></a><a name="7.10"></a>
-  - [7.10](#functions--constructor) Never use the Function constructor to create a new function. eslint: [`no-new-func`](http://eslint.org/docs/rules/no-new-func)
+  - Never use the Function constructor to create a new function. eslint: [`no-new-func`](http://eslint.org/docs/rules/no-new-func)
 
     > Why? Creating a function in this way evaluates a string similarly to eval(), which opens vulnerabilities.
 
@@ -370,8 +368,7 @@ This document contains guidelines for developers who want to work on the FraGOLE
     var subtract = Function('a', 'b', 'return a - b');
     ```
 
-  <a name="functions--signature-spacing"></a><a name="7.11"></a>
-  - [7.11](#functions--signature-spacing) Spacing in a function signature. eslint: [`space-before-function-paren`](http://eslint.org/docs/rules/space-before-function-paren) [`space-before-blocks`](http://eslint.org/docs/rules/space-before-blocks)
+  - Spacing in a function signature. eslint: [`space-before-function-paren`](http://eslint.org/docs/rules/space-before-function-paren) [`space-before-blocks`](http://eslint.org/docs/rules/space-before-blocks)
 
     > Why? Consistency is good, and you shouldn’t have to add or remove a space when adding or removing a name.
 
@@ -386,8 +383,8 @@ This document contains guidelines for developers who want to work on the FraGOLE
     const y = function a() {};
     ```
 
-  <a name="functions--mutate-params"></a><a name="7.12"></a>
-  - [7.12](#functions--mutate-params) Never mutate parameters. eslint: [`no-param-reassign`](http://eslint.org/docs/rules/no-param-reassign.html)
+
+  - Never mutate parameters. eslint: [`no-param-reassign`](http://eslint.org/docs/rules/no-param-reassign.html)
 
     > Why? Manipulating objects passed in as parameters can cause unwanted variable side effects in the original caller.
 
@@ -403,8 +400,7 @@ This document contains guidelines for developers who want to work on the FraGOLE
     }
     ```
 
-  <a name="functions--reassign-params"></a><a name="7.13"></a>
-  - [7.13](#functions--reassign-params) Never reassign parameters. eslint: [`no-param-reassign`](http://eslint.org/docs/rules/no-param-reassign.html)
+  - Never reassign parameters. eslint: [`no-param-reassign`](http://eslint.org/docs/rules/no-param-reassign.html)
 
     > Why? Reassigning parameters can lead to unexpected behavior, especially when accessing the `arguments` object. It can also cause optimization issues, especially in V8.
 
@@ -431,10 +427,9 @@ This document contains guidelines for developers who want to work on the FraGOLE
     }
     ```
 
-  <a name="functions--spread-vs-apply"></a><a name="7.14"></a>
-  - [7.14](#functions--spread-vs-apply) Prefer the use of the spread operator `...` to call variadic functions. eslint: [`prefer-spread`](http://eslint.org/docs/rules/prefer-spread)
-
-    > Why? It’s cleaner, you don’t need to supply a context, and you can not easily compose `new` with `apply`.
+  - Prefer the use of the spread operator `...` to call variadic functions. 
+  
+  > Why? It’s cleaner, you don’t need to supply a context, and you can not easily compose `new` with `apply`.
 
     ```javascript
     // bad
@@ -452,8 +447,7 @@ This document contains guidelines for developers who want to work on the FraGOLE
     new Date(...[2016, 8, 5]);
     ```
 
-  <a name="functions--signature-invocation-indentation"></a>
-  - [7.15](#functions--signature-invocation-indentation) Functions with multiline signatures, or invocations, should be indented just like every other multiline list in this guide: with each item on a line by itself, with a trailing comma on the last item.
+  - Functions with multiline signatures, or invocations, should be indented just like every other multiline list in this guide: with each item on a line by itself, with a trailing comma on the last item.
 
     ```javascript
     // bad
@@ -489,8 +483,7 @@ This document contains guidelines for developers who want to work on the FraGOLE
 
 ## Arrow Functions
 
-  <a name="arrows--use-them"></a><a name="8.1"></a>
-  - [8.1](#arrows--use-them) When you must use function expressions (as when passing an anonymous function), use arrow function notation. eslint: [`prefer-arrow-callback`](http://eslint.org/docs/rules/prefer-arrow-callback.html), [`arrow-spacing`](http://eslint.org/docs/rules/arrow-spacing.html) jscs: [`requireArrowFunctions`](http://jscs.info/rule/requireArrowFunctions)
+  - When you must use function expressions (as when passing an anonymous function), use arrow function notation. eslint: [`prefer-arrow-callback`](http://eslint.org/docs/rules/prefer-arrow-callback.html), [`arrow-spacing`](http://eslint.org/docs/rules/arrow-spacing.html) 
 
     > Why? It creates a version of the function that executes in the context of `this`, which is usually what you want, and is a more concise syntax.
 
@@ -510,105 +503,7 @@ This document contains guidelines for developers who want to work on the FraGOLE
     });
     ```
 
-  <a name="arrows--implicit-return"></a><a name="8.2"></a>
-  - [8.2](#arrows--implicit-return) If the function body consists of a single statement returning an [expression](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Expressions_and_Operators#Expressions) without side effects, omit the braces and use the implicit return. Otherwise, keep the braces and use a `return` statement. eslint: [`arrow-parens`](http://eslint.org/docs/rules/arrow-parens.html), [`arrow-body-style`](http://eslint.org/docs/rules/arrow-body-style.html) jscs:  [`disallowParenthesesAroundArrowParam`](http://jscs.info/rule/disallowParenthesesAroundArrowParam), [`requireShorthandArrowFunctions`](http://jscs.info/rule/requireShorthandArrowFunctions)
-
-    > Why? Syntactic sugar. It reads well when multiple functions are chained together.
-
-    ```javascript
-    // bad
-    [1, 2, 3].map(number => {
-      const nextNumber = number + 1;
-      `A string containing the ${nextNumber}.`;
-    });
-
-    // good
-    [1, 2, 3].map(number => `A string containing the ${number}.`);
-
-    // good
-    [1, 2, 3].map((number) => {
-      const nextNumber = number + 1;
-      return `A string containing the ${nextNumber}.`;
-    });
-
-    // good
-    [1, 2, 3].map((number, index) => ({
-      [index]: number,
-    }));
-
-    // No implicit return with side effects
-    function foo(callback) {
-      const val = callback();
-      if (val === true) {
-        // Do something if callback returns true
-      }
-    }
-
-    let bool = false;
-
-    // bad
-    foo(() => bool = true);
-
-    // good
-    foo(() => {
-      bool = true;
-    });
-    ```
-
-  <a name="arrows--paren-wrap"></a><a name="8.3"></a>
-  - [8.3](#arrows--paren-wrap) In case the expression spans over multiple lines, wrap it in parentheses for better readability.
-
-    > Why? It shows clearly where the function starts and ends.
-
-    ```javascript
-    // bad
-    ['get', 'post', 'put'].map(httpMethod => Object.prototype.hasOwnProperty.call(
-        httpMagicObjectWithAVeryLongName,
-        httpMethod,
-      )
-    );
-
-    // good
-    ['get', 'post', 'put'].map(httpMethod => (
-      Object.prototype.hasOwnProperty.call(
-        httpMagicObjectWithAVeryLongName,
-        httpMethod,
-      )
-    ));
-    ```
-
-  <a name="arrows--one-arg-parens"></a><a name="8.4"></a>
-  - [8.4](#arrows--one-arg-parens) If your function takes a single argument and doesn’t use braces, omit the parentheses. Otherwise, always include parentheses around arguments for clarity and consistency. Note: it is also acceptable to always use parentheses, in which case use the [“always” option](http://eslint.org/docs/rules/arrow-parens#always) for eslint or do not include [`disallowParenthesesAroundArrowParam`](http://jscs.info/rule/disallowParenthesesAroundArrowParam) for jscs. eslint: [`arrow-parens`](http://eslint.org/docs/rules/arrow-parens.html) jscs:  [`disallowParenthesesAroundArrowParam`](http://jscs.info/rule/disallowParenthesesAroundArrowParam)
-
-    > Why? Less visual clutter.
-
-    ```javascript
-    // bad
-    [1, 2, 3].map((x) => x * x);
-
-    // good
-    [1, 2, 3].map(x => x * x);
-
-    // good
-    [1, 2, 3].map(number => (
-      `A long string with the ${number}. It’s so long that we don’t want it to take up space on the .map line!`
-    ));
-
-    // bad
-    [1, 2, 3].map(x => {
-      const y = x + 1;
-      return x * y;
-    });
-
-    // good
-    [1, 2, 3].map((x) => {
-      const y = x + 1;
-      return x * y;
-    });
-    ```
-
-  <a name="arrows--confusing"></a><a name="8.5"></a>
-  - [8.5](#arrows--confusing) Avoid confusing arrow function syntax (`=>`) with comparison operators (`<=`, `>=`). eslint: [`no-confusing-arrow`](http://eslint.org/docs/rules/no-confusing-arrow)
+- Avoid confusing arrow function syntax (`=>`) with comparison operators (`<=`, `>=`). eslint: [`no-confusing-arrow`](http://eslint.org/docs/rules/no-confusing-arrow)
 
     ```javascript
     // bad
@@ -631,8 +526,7 @@ This document contains guidelines for developers who want to work on the FraGOLE
 
 ## Classes & Constructors
 
-  <a name="constructors--use-class"></a><a name="9.1"></a>
-  - [9.1](#constructors--use-class) Always use `class`. Avoid manipulating `prototype` directly.
+  - Always use `class`. Avoid manipulating `prototype` directly.
 
     > Why? `class` syntax is more concise and easier to reason about.
 
@@ -660,8 +554,7 @@ This document contains guidelines for developers who want to work on the FraGOLE
     }
     ```
 
-  <a name="constructors--extends"></a><a name="9.2"></a>
-  - [9.2](#constructors--extends) Use `extends` for inheritance.
+  - Use `extends` for inheritance.
 
     > Why? It is a built-in way to inherit prototype functionality without breaking `instanceof`.
 
@@ -684,8 +577,7 @@ This document contains guidelines for developers who want to work on the FraGOLE
     }
     ```
 
-  <a name="constructors--chaining"></a><a name="9.3"></a>
-  - [9.3](#constructors--chaining) Methods can return `this` to help with method chaining.
+  - Methods can return `this` to help with method chaining.
 
     ```javascript
     // bad
@@ -721,27 +613,7 @@ This document contains guidelines for developers who want to work on the FraGOLE
       .setHeight(20);
     ```
 
-  <a name="constructors--tostring"></a><a name="9.4"></a>
-  - [9.4](#constructors--tostring) It’s okay to write a custom toString() method, just make sure it works successfully and causes no side effects.
-
-    ```javascript
-    class Jedi {
-      constructor(options = {}) {
-        this.name = options.name || 'no name';
-      }
-
-      getName() {
-        return this.name;
-      }
-
-      toString() {
-        return `Jedi - ${this.getName()}`;
-      }
-    }
-    ```
-
-  <a name="constructors--no-useless"></a><a name="9.5"></a>
-  - [9.5](#constructors--no-useless) Classes have a default constructor if one is not specified. An empty constructor function or one that just delegates to a parent class is unnecessary. eslint: [`no-useless-constructor`](http://eslint.org/docs/rules/no-useless-constructor)
+  - Classes have a default constructor if one is not specified. An empty constructor function or one that just delegates to a parent class is unnecessary. eslint: [`no-useless-constructor`](http://eslint.org/docs/rules/no-useless-constructor)
 
     ```javascript
     // bad
@@ -769,8 +641,7 @@ This document contains guidelines for developers who want to work on the FraGOLE
     }
     ```
 
-  <a name="classes--no-duplicate-members"></a>
-  - [9.6](#classes--no-duplicate-members) Avoid duplicate class members. eslint: [`no-dupe-class-members`](http://eslint.org/docs/rules/no-dupe-class-members)
+  - Avoid duplicate class members. eslint: [`no-dupe-class-members`](http://eslint.org/docs/rules/no-dupe-class-members)
 
     > Why? Duplicate class member declarations will silently prefer the last one - having duplicates is almost certainly a bug.
 
@@ -798,124 +669,9 @@ This document contains guidelines for developers who want to work on the FraGOLE
  
 **[⬆ back to top](#table-of-contents)**
 
-## Iterators and Generators
-
-  <a name="iterators--nope"></a><a name="11.1"></a>
-  - [11.1](#iterators--nope) Don’t use iterators. Prefer JavaScript’s higher-order functions instead of loops like `for-in` or `for-of`. eslint: [`no-iterator`](http://eslint.org/docs/rules/no-iterator.html) [`no-restricted-syntax`](http://eslint.org/docs/rules/no-restricted-syntax)
-
-    > Why? This enforces our immutable rule. Dealing with pure functions that return values is easier to reason about than side effects.
-
-    > Use `map()` / `every()` / `filter()` / `find()` / `findIndex()` / `reduce()` / `some()` / ... to iterate over arrays, and `Object.keys()` / `Object.values()` / `Object.entries()` to produce arrays so you can iterate over objects.
-
-    ```javascript
-    const numbers = [1, 2, 3, 4, 5];
-
-    // bad
-    let sum = 0;
-    for (let num of numbers) {
-      sum += num;
-    }
-    sum === 15;
-
-    // good
-    let sum = 0;
-    numbers.forEach((num) => {
-      sum += num;
-    });
-    sum === 15;
-
-    // best (use the functional force)
-    const sum = numbers.reduce((total, num) => total + num, 0);
-    sum === 15;
-
-    // bad
-    const increasedByOne = [];
-    for (let i = 0; i < numbers.length; i++) {
-      increasedByOne.push(numbers[i] + 1);
-    }
-
-    // good
-    const increasedByOne = [];
-    numbers.forEach((num) => {
-      increasedByOne.push(num + 1);
-    );
-
-    // best (keeping it functional)
-    const increasedByOne = numbers.map(num => num + 1);
-    ```
-
-  <a name="generators--nope"></a><a name="11.2"></a>
-  - [11.2](#generators--nope) Don’t use generators for now.
-
-    > Why? They don’t transpile well to ES5.
-
-  <a name="generators--spacing"></a>
-  - [11.3](#generators--spacing) If you must use generators, or if you disregard [our advice](#generators--nope), make sure their function signature is spaced properly. eslint: [`generator-star-spacing`](http://eslint.org/docs/rules/generator-star-spacing)
-
-    > Why? `function` and `*` are part of the same conceptual keyword - `*` is not a modifier for `function`, `function*` is a unique construct, different from `function`.
-
-    ```javascript
-    // bad
-    function * foo() {
-      // ...
-    }
-
-    // bad
-    const bar = function * () {
-      // ...
-    };
-
-    // bad
-    const baz = function *() {
-      // ...
-    };
-
-    // bad
-    const quux = function*() {
-      // ...
-    };
-
-    // bad
-    function*foo() {
-      // ...
-    }
-
-    // bad
-    function *foo() {
-      // ...
-    }
-
-    // very bad
-    function
-    *
-    foo() {
-      // ...
-    }
-
-    // very bad
-    const wat = function
-    *
-    () {
-      // ...
-    };
-
-    // good
-    function* foo() {
-      // ...
-    }
-
-    // good
-    const foo = function* () {
-      // ...
-    };
-    ```
-
-**[⬆ back to top](#table-of-contents)**
-
 ## Properties
 
-  <a name="properties--dot"></a><a name="12.1"></a>
-  - [12.1](#properties--dot) Use dot notation when accessing properties. eslint: [`dot-notation`](http://eslint.org/docs/rules/dot-notation.html) jscs: [`requireDotNotation`](http://jscs.info/rule/requireDotNotation)
+  - Prefer dot notation when accessing properties.
 
     ```javascript
     const luke = {
@@ -930,8 +686,7 @@ This document contains guidelines for developers who want to work on the FraGOLE
     const isJedi = luke.jedi;
     ```
 
-  <a name="properties--bracket"></a><a name="12.2"></a>
-  - [12.2](#properties--bracket) Use bracket notation `[]` when accessing properties with a variable.
+  - Use bracket notation `[]` when accessing properties with a variable.
 
     ```javascript
     const luke = {
@@ -950,8 +705,7 @@ This document contains guidelines for developers who want to work on the FraGOLE
 
 ## Variables
 
-  <a name="variables--const"></a><a name="13.1"></a>
-  - [13.1](#variables--const) Always use `const` or `let` to declare variables. Not doing so will result in global variables. We want to avoid polluting the global namespace. Captain Planet warned us of that. eslint: [`no-undef`](http://eslint.org/docs/rules/no-undef) [`prefer-const`](http://eslint.org/docs/rules/prefer-const)
+  - Always use `const` or `let` to declare variables. Not doing so will result in global variables. We want to avoid polluting the global namespace. Captain Planet warned us of that. eslint: [`no-undef`](http://eslint.org/docs/rules/no-undef) [`prefer-const`](http://eslint.org/docs/rules/prefer-const)
 
     ```javascript
     // bad
@@ -961,8 +715,7 @@ This document contains guidelines for developers who want to work on the FraGOLE
     const superPower = new SuperPower();
     ```
 
-  <a name="variables--one-const"></a><a name="13.2"></a>
-  - [13.2](#variables--one-const) Use one `const` or `let` declaration per variable. eslint: [`one-var`](http://eslint.org/docs/rules/one-var.html) jscs: [`disallowMultipleVarDecl`](http://jscs.info/rule/disallowMultipleVarDecl)
+  - Use one `const` or `let` declaration per variable. eslint: [`one-var`](http://eslint.org/docs/rules/one-var.html):
 
     > Why? It’s easier to add new variable declarations this way, and you never have to worry about swapping out a `;` for a `,` or introducing punctuation-only diffs. You can also step through each declaration with the debugger, instead of jumping through all of them at once.
 
@@ -983,9 +736,7 @@ This document contains guidelines for developers who want to work on the FraGOLE
     const goSportsTeam = true;
     const dragonball = 'z';
     ```
-
-  <a name="variables--const-let-group"></a><a name="13.3"></a>
-  - [13.3](#variables--const-let-group) Group all your `const`s and then group all your `let`s.
+  - Group all your `const`s and then group all your `let`s.
 
     > Why? This is helpful when later on you might need to assign a variable depending on one of the previous assigned variables.
 
@@ -1010,8 +761,7 @@ This document contains guidelines for developers who want to work on the FraGOLE
     let length;
     ```
 
-  <a name="variables--define-where-used"></a><a name="13.4"></a>
-  - [13.4](#variables--define-where-used) Assign variables where you need them, but place them in a reasonable place.
+  - Assign variables where you need them, but place them in a reasonable place.
 
     > Why? `let` and `const` are block scoped and not function scoped.
 
@@ -1048,8 +798,9 @@ This document contains guidelines for developers who want to work on the FraGOLE
       return name;
     }
     ```
-  <a name="variables--no-chain-assignment"></a><a name="13.5"></a>
-  - [13.5](#variables--no-chain-assignment) Don’t chain variable assignments.
+
+
+  - Don’t chain variable assignments.
 
     > Why? Chaining variable assignments creates implicit global variables.
 
@@ -1081,46 +832,11 @@ This document contains guidelines for developers who want to work on the FraGOLE
     // the same applies for `const`
     ```
 
-  <a name="variables--unary-increment-decrement"></a><a name="13.6"></a>
-  - [13.6](#variables--unary-increment-decrement) Avoid using unary increments and decrements (++, --). eslint [`no-plusplus`](http://eslint.org/docs/rules/no-plusplus)
-
-    > Why? Per the eslint documentation, unary increment and decrement statements are subject to automatic semicolon insertion and can cause silent errors with incrementing or decrementing values within an application. It is also more expressive to mutate your values with statements like `num += 1` instead of `num++` or `num ++`. Disallowing unary increment and decrement statements also prevents you from pre-incrementing/pre-decrementing values unintentionally which can also cause unexpected behavior in your programs.
-
-    ```javascript
-    // bad
-
-    const array = [1, 2, 3];
-    let num = 1;
-    num++;
-    --num;
-
-    let sum = 0;
-    let truthyCount = 0;
-    for (let i = 0; i < array.length; i++) {
-      let value = array[i];
-      sum += value;
-      if (value) {
-        truthyCount++;
-      }
-    }
-
-    // good
-
-    const array = [1, 2, 3];
-    let num = 1;
-    num += 1;
-    num -= 1;
-
-    const sum = array.reduce((a, b) => a + b, 0);
-    const truthyCount = array.filter(Boolean).length;
-    ```
-
 **[⬆ back to top](#table-of-contents)**
 
 ## Hoisting
 
-  <a name="hoisting--about"></a><a name="14.1"></a>
-  - [14.1](#hoisting--about) `var` declarations get hoisted to the top of their scope, their assignment does not. `const` and `let` declarations are blessed with a new concept called [Temporal Dead Zones (TDZ)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let#Temporal_dead_zone_and_errors_with_let). It’s important to know why [typeof is no longer safe](http://es-discourse.com/t/why-typeof-is-no-longer-safe/15).
+  - `var` declarations get hoisted to the top of their scope, their assignment does not. `const` and `let` declarations are blessed with a new concept called [Temporal Dead Zones (TDZ)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let#Temporal_dead_zone_and_errors_with_let). It’s important to know why [typeof is no longer safe](http://es-discourse.com/t/why-typeof-is-no-longer-safe/15).
 
     ```javascript
     // we know this wouldn’t work (assuming there
@@ -1155,8 +871,7 @@ This document contains guidelines for developers who want to work on the FraGOLE
     }
     ```
 
-  <a name="hoisting--anon-expressions"></a><a name="14.2"></a>
-  - [14.2](#hoisting--anon-expressions) Anonymous function expressions hoist their variable name, but not the function assignment.
+  - Anonymous function expressions hoist their variable name, but not the function assignment.
 
     ```javascript
     function example() {
@@ -1170,8 +885,7 @@ This document contains guidelines for developers who want to work on the FraGOLE
     }
     ```
 
-  <a name="hoisting--named-expresions"></a><a name="14.3"></a>
-  - [14.3](#hoisting--named-expresions) Named function expressions hoist the variable name, not the function name or the function body.
+  - Named function expressions hoist the variable name, not the function name or the function body.
 
     ```javascript
     function example() {
@@ -1199,8 +913,7 @@ This document contains guidelines for developers who want to work on the FraGOLE
     }
     ```
 
-  <a name="hoisting--declarations"></a><a name="14.4"></a>
-  - [14.4](#hoisting--declarations) Function declarations hoist their name and the function body.
+  - Function declarations hoist their name and the function body.
 
     ```javascript
     function example() {
@@ -1218,11 +931,9 @@ This document contains guidelines for developers who want to work on the FraGOLE
 
 ## Comparison Operators & Equality
 
-  <a name="comparison--eqeqeq"></a><a name="15.1"></a>
-  - [15.1](#comparison--eqeqeq) Use `===` and `!==` over `==` and `!=`. eslint: [`eqeqeq`](http://eslint.org/docs/rules/eqeqeq.html)
+  - Use `===` and `!==` over `==` and `!=`. eslint: [`eqeqeq`](http://eslint.org/docs/rules/eqeqeq.html)
 
-  <a name="comparison--if"></a><a name="15.2"></a>
-  - [15.2](#comparison--if) Conditional statements such as the `if` statement evaluate their expression using coercion with the `ToBoolean` abstract method and always follow these simple rules:
+  - Conditional statements such as the `if` statement evaluate their expression using coercion with the `ToBoolean` abstract method and always follow these simple rules:
 
     - **Objects** evaluate to **true**
     - **Undefined** evaluates to **false**
@@ -1237,9 +948,8 @@ This document contains guidelines for developers who want to work on the FraGOLE
       // an array (even an empty one) is an object, objects will evaluate to true
     }
     ```
-
-  <a name="comparison--shortcuts"></a><a name="15.3"></a>
-  - [15.3](#comparison--shortcuts) Use shortcuts for booleans, but explicit comparisons for strings and numbers.
+  
+  - Use shortcuts for booleans, but explicit comparisons for strings and numbers.
 
     ```javascript
     // bad
@@ -1272,62 +982,10 @@ This document contains guidelines for developers who want to work on the FraGOLE
       // ...
     }
     ```
+  
+  - For more information see [Truth Equality and JavaScript](https://javascriptweblog.wordpress.com/2011/02/07/truth-equality-and-javascript/#more-2108) by Angus Croll.
 
-  <a name="comparison--moreinfo"></a><a name="15.4"></a>
-  - [15.4](#comparison--moreinfo) For more information see [Truth Equality and JavaScript](https://javascriptweblog.wordpress.com/2011/02/07/truth-equality-and-javascript/#more-2108) by Angus Croll.
-
-  <a name="comparison--switch-blocks"></a><a name="15.5"></a>
-  - [15.5](#comparison--switch-blocks) Use braces to create blocks in `case` and `default` clauses that contain lexical declarations (e.g. `let`, `const`, `function`, and `class`).
-
-    > Why? Lexical declarations are visible in the entire `switch` block but only get initialized when assigned, which only happens when its `case` is reached. This causes problems when multiple `case` clauses attempt to define the same thing.
-
-    eslint rules: [`no-case-declarations`](http://eslint.org/docs/rules/no-case-declarations.html).
-
-    ```javascript
-    // bad
-    switch (foo) {
-      case 1:
-        let x = 1;
-        break;
-      case 2:
-        const y = 2;
-        break;
-      case 3:
-        function f() {
-          // ...
-        }
-        break;
-      default:
-        class C {}
-    }
-
-    // good
-    switch (foo) {
-      case 1: {
-        let x = 1;
-        break;
-      }
-      case 2: {
-        const y = 2;
-        break;
-      }
-      case 3: {
-        function f() {
-          // ...
-        }
-        break;
-      }
-      case 4:
-        bar();
-        break;
-      default: {
-        class C {}
-      }
-    }
-    ```
-
-  <a name="comparison--nested-ternaries"></a><a name="15.6"></a>
-  - [15.6](#comparison--nested-ternaries) Ternaries should not be nested and generally be single line expressions.
+  - Ternaries should not be nested and generally be single line expressions.
 
     eslint rules: [`no-nested-ternary`](http://eslint.org/docs/rules/no-nested-ternary.html).
 
@@ -1350,10 +1008,7 @@ This document contains guidelines for developers who want to work on the FraGOLE
     const foo = maybe1 > maybe2 ? 'bar' : maybeNull;
     ```
 
-  <a name="comparison--unneeded-ternary"></a><a name="15.7"></a>
-  - [15.7](#comparison--unneeded-ternary) Avoid unneeded ternary statements.
-
-    eslint rules: [`no-unneeded-ternary`](http://eslint.org/docs/rules/no-unneeded-ternary.html).
+  - Avoid unneeded ternary statements. eslint rules: [`no-unneeded-ternary`](http://eslint.org/docs/rules/no-unneeded-ternary.html).
 
     ```javascript
     // bad
@@ -1371,8 +1026,7 @@ This document contains guidelines for developers who want to work on the FraGOLE
 
 ## Blocks
 
-  <a name="blocks--braces"></a><a name="16.1"></a>
-  - [16.1](#blocks--braces) Use braces with all multi-line blocks.
+  - Use braces with all multi-line blocks.
 
     ```javascript
     // bad
@@ -1396,9 +1050,8 @@ This document contains guidelines for developers who want to work on the FraGOLE
     }
     ```
 
-  <a name="blocks--cuddled-elses"></a><a name="16.2"></a>
-  - [16.2](#blocks--cuddled-elses) If you're using multi-line blocks with `if` and `else`, put `else` on the same line as your `if` block’s closing brace. eslint: [`brace-style`](http://eslint.org/docs/rules/brace-style.html) jscs:  [`disallowNewlineBeforeBlockStatements`](http://jscs.info/rule/disallowNewlineBeforeBlockStatements)
-
+  - If you're using multi-line blocks with `if` and `else`, put `else` on the same line as your `if` block’s closing brace. eslint: [`brace-style`](http://eslint.org/docs/rules/brace-style.html) 
+  
     ```javascript
     // bad
     if (test) {
@@ -1422,8 +1075,7 @@ This document contains guidelines for developers who want to work on the FraGOLE
 
 ## Control Statements
 
-  <a name="control-statements"></a>
-  - [17.1](#control-statements) In case your control statement (`if`, `while` etc.) gets too long or exceeds the maximum line length, each (grouped) condition could be put into a new line. It’s up to you whether the logical operator should begin or end the line.
+  - In case your control statement (`if`, `while` etc.) gets too long or exceeds the maximum line length, each (grouped) condition could be put into a new line. It’s up to you whether the logical operator should begin or end the line.
 
     ```javascript
     // bad
@@ -1478,116 +1130,13 @@ This document contains guidelines for developers who want to work on the FraGOLE
 
 ## Comments
 
-  <a name="comments--multiline"></a><a name="17.1"></a>
-  - [18.1](#comments--multiline) Use `/** ... */` for multi-line comments.
+  - The FraGOLE project uses [JSDoc](http://usejsdoc.org/) for documentation. Check out how it works and write your comments accordingly. Comments that should show up in the documantation start with /**.
 
-    ```javascript
-    // bad
-    // make() returns a new element
-    // based on the passed in tag name
-    //
-    // @param {String} tag
-    // @return {Element} element
-    function make(tag) {
+  - Use // and /*...*/ for comments that should not appear in the JSDoc-Documentation. 
 
-      // ...
+  - Prefixing your comments with `FIXME` or `TODO` helps other developers quickly understand if you're pointing out a problem that needs to be revisited, or if you're suggesting a solution to the problem that needs to be implemented. These are different than regular comments because they are actionable. The actions are `FIXME: -- need to figure this out` or `TODO: -- need to implement`.
 
-      return element;
-    }
-
-    // good
-    /**
-     * make() returns a new element
-     * based on the passed-in tag name
-     */
-    function make(tag) {
-
-      // ...
-
-      return element;
-    }
-    ```
-
-  <a name="comments--singleline"></a><a name="17.2"></a>
-  - [18.2](#comments--singleline) Use `//` for single line comments. Place single line comments on a newline above the subject of the comment. Put an empty line before the comment unless it’s on the first line of a block.
-
-    ```javascript
-    // bad
-    const active = true;  // is current tab
-
-    // good
-    // is current tab
-    const active = true;
-
-    // bad
-    function getType() {
-      console.log('fetching type...');
-      // set the default type to 'no type'
-      const type = this.type || 'no type';
-
-      return type;
-    }
-
-    // good
-    function getType() {
-      console.log('fetching type...');
-
-      // set the default type to 'no type'
-      const type = this.type || 'no type';
-
-      return type;
-    }
-
-    // also good
-    function getType() {
-      // set the default type to 'no type'
-      const type = this.type || 'no type';
-
-      return type;
-    }
-    ```
-
-  - [18.3](#comments--spaces) Start all comments with a space to make it easier to read. eslint: [`spaced-comment`](http://eslint.org/docs/rules/spaced-comment)
-
-    ```javascript
-    // bad
-    //is current tab
-    const active = true;
-
-    // good
-    // is current tab
-    const active = true;
-
-    // bad
-    /**
-     *make() returns a new element
-     *based on the passed-in tag name
-     */
-    function make(tag) {
-
-      // ...
-
-      return element;
-    }
-
-    // good
-    /**
-     * make() returns a new element
-     * based on the passed-in tag name
-     */
-    function make(tag) {
-
-      // ...
-
-      return element;
-    }
-    ```
-
-  <a name="comments--actionitems"></a><a name="17.3"></a>
-  - [18.4](#comments--actionitems) Prefixing your comments with `FIXME` or `TODO` helps other developers quickly understand if you're pointing out a problem that needs to be revisited, or if you're suggesting a solution to the problem that needs to be implemented. These are different than regular comments because they are actionable. The actions are `FIXME: -- need to figure this out` or `TODO: -- need to implement`.
-
-  <a name="comments--fixme"></a><a name="17.4"></a>
-  - [18.5](#comments--fixme) Use `// FIXME:` to annotate problems.
+  - Use `// FIXME:` to annotate problems.
 
     ```javascript
     class Calculator extends Abacus {
@@ -1600,8 +1149,7 @@ This document contains guidelines for developers who want to work on the FraGOLE
     }
     ```
 
-  <a name="comments--todo"></a><a name="17.5"></a>
-  - [18.6](#comments--todo) Use `// TODO:` to annotate solutions to problems.
+  - Use `// TODO:` to annotate solutions to problems.
 
     ```javascript
     class Calculator extends Abacus {
@@ -1618,28 +1166,18 @@ This document contains guidelines for developers who want to work on the FraGOLE
 
 ## Whitespace
 
-  <a name="whitespace--spaces"></a><a name="18.1"></a>
-  - [19.1](#whitespace--spaces) Use soft tabs (space character) set to 2 spaces. eslint: [`indent`](http://eslint.org/docs/rules/indent.html) jscs: [`validateIndentation`](http://jscs.info/rule/validateIndentation)
+  - Use soft tabs (space character) set to 4 spaces. eslint: [`indent`](http://eslint.org/docs/rules/indent.html) 
+  
+    > Why? Because! Do not start a discussion. There are plenty of arguments for 4 spaces and for 2 spaces. My hope is that 4 spaces enforce a bit more discipline when it comes to avoid deep nesting.
 
-    ```javascript
-    // bad
-    function foo() {
-    ∙∙∙∙let name;
-    }
-
-    // bad
-    function bar() {
-    ∙let name;
-    }
-
+```javascript
     // good
     function baz() {
-    ∙∙let name;
+    ∙∙∙∙let name;
     }
     ```
 
-  <a name="whitespace--before-blocks"></a><a name="18.2"></a>
-  - [19.2](#whitespace--before-blocks) Place 1 space before the leading brace. eslint: [`space-before-blocks`](http://eslint.org/docs/rules/space-before-blocks.html) jscs: [`requireSpaceBeforeBlockStatements`](http://jscs.info/rule/requireSpaceBeforeBlockStatements)
+  - Place 1 space before the leading brace. eslint: [`space-before-blocks`](http://eslint.org/docs/rules/space-before-blocks.html) 
 
     ```javascript
     // bad
@@ -1665,171 +1203,7 @@ This document contains guidelines for developers who want to work on the FraGOLE
     });
     ```
 
-  <a name="whitespace--around-keywords"></a><a name="18.3"></a>
-  - [19.3](#whitespace--around-keywords) Place 1 space before the opening parenthesis in control statements (`if`, `while` etc.). Place no space between the argument list and the function name in function calls and declarations. eslint: [`keyword-spacing`](http://eslint.org/docs/rules/keyword-spacing.html) jscs: [`requireSpaceAfterKeywords`](http://jscs.info/rule/requireSpaceAfterKeywords)
-
-    ```javascript
-    // bad
-    if(isJedi) {
-      fight ();
-    }
-
-    // good
-    if (isJedi) {
-      fight();
-    }
-
-    // bad
-    function fight () {
-      console.log ('Swooosh!');
-    }
-
-    // good
-    function fight() {
-      console.log('Swooosh!');
-    }
-    ```
-
-  <a name="whitespace--infix-ops"></a><a name="18.4"></a>
-  - [19.4](#whitespace--infix-ops) Set off operators with spaces. eslint: [`space-infix-ops`](http://eslint.org/docs/rules/space-infix-ops.html) jscs: [`requireSpaceBeforeBinaryOperators`](http://jscs.info/rule/requireSpaceBeforeBinaryOperators), [`requireSpaceAfterBinaryOperators`](http://jscs.info/rule/requireSpaceAfterBinaryOperators)
-
-    ```javascript
-    // bad
-    const x=y+5;
-
-    // good
-    const x = y + 5;
-    ```
-
-  <a name="whitespace--newline-at-end"></a><a name="18.5"></a>
-  - [19.5](#whitespace--newline-at-end) End files with a single newline character. eslint: [`eol-last`](https://github.com/eslint/eslint/blob/master/docs/rules/eol-last.md)
-
-    ```javascript
-    // bad
-    import { es6 } from './AirbnbStyleGuide';
-      // ...
-    export default es6;
-    ```
-
-    ```javascript
-    // bad
-    import { es6 } from './AirbnbStyleGuide';
-      // ...
-    export default es6;↵
-    ↵
-    ```
-
-    ```javascript
-    // good
-    import { es6 } from './AirbnbStyleGuide';
-      // ...
-    export default es6;↵
-    ```
-
-  <a name="whitespace--chains"></a><a name="18.6"></a>
-  - [19.6](#whitespace--chains) Use indentation when making long method chains (more than 2 method chains). Use a leading dot, which
-    emphasizes that the line is a method call, not a new statement. eslint: [`newline-per-chained-call`](http://eslint.org/docs/rules/newline-per-chained-call) [`no-whitespace-before-property`](http://eslint.org/docs/rules/no-whitespace-before-property)
-
-    ```javascript
-    // bad
-    $('#items').find('.selected').highlight().end().find('.open').updateCount();
-
-    // bad
-    $('#items').
-      find('.selected').
-        highlight().
-        end().
-      find('.open').
-        updateCount();
-
-    // good
-    $('#items')
-      .find('.selected')
-        .highlight()
-        .end()
-      .find('.open')
-        .updateCount();
-
-    // bad
-    const leds = stage.selectAll('.led').data(data).enter().append('svg:svg').classed('led', true)
-        .attr('width', (radius + margin) * 2).append('svg:g')
-        .attr('transform', `translate(${radius + margin},${radius + margin})`)
-        .call(tron.led);
-
-    // good
-    const leds = stage.selectAll('.led')
-        .data(data)
-      .enter().append('svg:svg')
-        .classed('led', true)
-        .attr('width', (radius + margin) * 2)
-      .append('svg:g')
-        .attr('transform', `translate(${radius + margin},${radius + margin})`)
-        .call(tron.led);
-
-    // good
-    const leds = stage.selectAll('.led').data(data);
-    ```
-
-  <a name="whitespace--after-blocks"></a><a name="18.7"></a>
-  - [19.7](#whitespace--after-blocks) Leave a blank line after blocks and before the next statement. jscs: [`requirePaddingNewLinesAfterBlocks`](http://jscs.info/rule/requirePaddingNewLinesAfterBlocks)
-
-    ```javascript
-    // bad
-    if (foo) {
-      return bar;
-    }
-    return baz;
-
-    // good
-    if (foo) {
-      return bar;
-    }
-
-    return baz;
-
-    // bad
-    const obj = {
-      foo() {
-      },
-      bar() {
-      },
-    };
-    return obj;
-
-    // good
-    const obj = {
-      foo() {
-      },
-
-      bar() {
-      },
-    };
-
-    return obj;
-
-    // bad
-    const arr = [
-      function foo() {
-      },
-      function bar() {
-      },
-    ];
-    return arr;
-
-    // good
-    const arr = [
-      function foo() {
-      },
-
-      function bar() {
-      },
-    ];
-
-    return arr;
-    ```
-
-  <a name="whitespace--padded-blocks"></a><a name="18.8"></a>
-  - [19.8](#whitespace--padded-blocks) Do not pad your blocks with blank lines. eslint: [`padded-blocks`](http://eslint.org/docs/rules/padded-blocks.html) jscs:  [`disallowPaddingNewlinesInBlocks`](http://jscs.info/rule/disallowPaddingNewlinesInBlocks)
+  - Do not pad your blocks with blank lines. eslint: [`padded-blocks`](http://eslint.org/docs/rules/padded-blocks.html)
 
     ```javascript
     // bad
@@ -1861,8 +1235,7 @@ This document contains guidelines for developers who want to work on the FraGOLE
     }
     ```
 
-  <a name="whitespace--in-parens"></a><a name="18.9"></a>
-  - [19.9](#whitespace--in-parens) Do not add spaces inside parentheses. eslint: [`space-in-parens`](http://eslint.org/docs/rules/space-in-parens.html) jscs: [`disallowSpacesInsideParentheses`](http://jscs.info/rule/disallowSpacesInsideParentheses)
+  - Do not add spaces inside parentheses. eslint: [`space-in-parens`](http://eslint.org/docs/rules/space-in-parens.html)
 
     ```javascript
     // bad
@@ -1886,9 +1259,8 @@ This document contains guidelines for developers who want to work on the FraGOLE
     }
     ```
 
-  <a name="whitespace--in-brackets"></a><a name="18.10"></a>
-  - [19.10](#whitespace--in-brackets) Do not add spaces inside brackets. eslint: [`array-bracket-spacing`](http://eslint.org/docs/rules/array-bracket-spacing.html) jscs: [`disallowSpacesInsideArrayBrackets`](http://jscs.info/rule/disallowSpacesInsideArrayBrackets)
-
+  - Do not add spaces inside brackets. eslint: [`array-bracket-spacing`](http://eslint.org/docs/rules/array-bracket-spacing.html) 
+  
     ```javascript
     // bad
     const foo = [ 1, 2, 3 ];
@@ -1898,20 +1270,8 @@ This document contains guidelines for developers who want to work on the FraGOLE
     const foo = [1, 2, 3];
     console.log(foo[0]);
     ```
-
-  <a name="whitespace--in-braces"></a><a name="18.11"></a>
-  - [19.11](#whitespace--in-braces) Add spaces inside curly braces. eslint: [`object-curly-spacing`](http://eslint.org/docs/rules/object-curly-spacing.html) jscs: [`requireSpacesInsideObjectBrackets`](http://jscs.info/rule/requireSpacesInsideObjectBrackets)
-
-    ```javascript
-    // bad
-    const foo = {clark: 'kent'};
-
-    // good
-    const foo = { clark: 'kent' };
-    ```
-
-  <a name="whitespace--max-len"></a><a name="18.12"></a>
-  - [19.12](#whitespace--max-len) Avoid having lines of code that are longer than 100 characters (including whitespace). Note: per [above](#strings--line-length), long strings are exempt from this rule, and should not be broken up. eslint: [`max-len`](http://eslint.org/docs/rules/max-len.html) jscs: [`maximumLineLength`](http://jscs.info/rule/maximumLineLength)
+ 
+  - Avoid having lines of code that are longer than 100 characters (including whitespace). Note: long strings are exempt from this rule, and should not be broken up. eslint: [`max-len`](http://eslint.org/docs/rules/max-len.html) jscs: [`maximumLineLength`](http://jscs.info/rule/maximumLineLength)
 
     > Why? This ensures readability and maintainability.
 
@@ -1944,8 +1304,7 @@ This document contains guidelines for developers who want to work on the FraGOLE
 
 ## Commas
 
-<a name="commas--leading-trailing"></a><a name="19.1"></a>
-  - [20.1](#commas--leading-trailing) Leading commas: **Nope.** eslint: [`comma-style`](http://eslint.org/docs/rules/comma-style.html) jscs: [`requireCommaBeforeLineBreak`](http://jscs.info/rule/requireCommaBeforeLineBreak)
+  - Leading commas: **Nope.** eslint: [`comma-style`](http://eslint.org/docs/rules/comma-style.html)
 
     ```javascript
     // bad
@@ -1979,9 +1338,8 @@ This document contains guidelines for developers who want to work on the FraGOLE
     };
     ```
 
-  <a name="commas--dangling"></a><a name="19.2"></a>
-  - [20.2](#commas--dangling) Additional trailing comma: **Yup.** eslint: [`comma-dangle`](http://eslint.org/docs/rules/comma-dangle.html) jscs: [`requireTrailingComma`](http://jscs.info/rule/requireTrailingComma)
-
+  - Additional trailing comma: **Yup.** eslint: [`comma-dangle`](http://eslint.org/docs/rules/comma-dangle.html)
+  
     > Why? This leads to cleaner git diffs. Also, transpilers like Babel will remove the additional trailing comma in the transpiled code which means you don’t have to worry about the [trailing comma problem](https://github.com/airbnb/javascript/blob/es5-deprecated/es5/README.md#commas) in legacy browsers.
 
     ```diff
@@ -2079,8 +1437,7 @@ This document contains guidelines for developers who want to work on the FraGOLE
 
 ## Semicolons
 
-  <a name="semicolons--required"></a><a name="20.1"></a>
-  - [21.1](#semicolons--required) **Yup.** eslint: [`semi`](http://eslint.org/docs/rules/semi.html) jscs: [`requireSemicolons`](http://jscs.info/rule/requireSemicolons)
+  - **Yup.** eslint: [`semi`](http://eslint.org/docs/rules/semi.html) 
 
     ```javascript
     // bad
@@ -2108,11 +1465,10 @@ This document contains guidelines for developers who want to work on the FraGOLE
 
 ## Type Casting & Coercion
 
-  <a name="coercion--explicit"></a><a name="21.1"></a>
-  - [22.1](#coercion--explicit) Perform type coercion at the beginning of the statement.
+  
+  - Perform type coercion at the beginning of the statement.
 
-  <a name="coercion--strings"></a><a name="21.2"></a>
-  - [22.2](#coercion--strings)  Strings:
+  - Strings:
 
     ```javascript
     // => this.reviewScore = 9;
@@ -2127,8 +1483,7 @@ This document contains guidelines for developers who want to work on the FraGOLE
     const totalScore = String(this.reviewScore);
     ```
 
-  <a name="coercion--numbers"></a><a name="21.3"></a>
-  - [22.3](#coercion--numbers) Numbers: Use `Number` for type casting and `parseInt` always with a radix for parsing strings. eslint: [`radix`](http://eslint.org/docs/rules/radix)
+  - Numbers: Use `Number` for type casting and `parseInt` always with a radix for parsing strings. eslint: [`radix`](http://eslint.org/docs/rules/radix)
 
     ```javascript
     const inputValue = '4';
@@ -2152,8 +1507,7 @@ This document contains guidelines for developers who want to work on the FraGOLE
     const val = parseInt(inputValue, 10);
     ```
 
-  <a name="coercion--comment-deviations"></a><a name="21.4"></a>
-  - [22.4](#coercion--comment-deviations) If for whatever reason you are doing something wild and `parseInt` is your bottleneck and need to use Bitshift for [performance reasons](https://jsperf.com/coercion-vs-casting/3), leave a comment explaining why and what you're doing.
+  - If for whatever reason you are doing something wild and `parseInt` is your bottleneck and need to use Bitshift for [performance reasons](https://jsperf.com/coercion-vs-casting/3), leave a comment explaining why and what you're doing.
 
     ```javascript
     // good
@@ -2165,8 +1519,7 @@ This document contains guidelines for developers who want to work on the FraGOLE
     const val = inputValue >> 0;
     ```
 
-  <a name="coercion--bitwise"></a><a name="21.5"></a>
-  - [22.5](#coercion--bitwise) **Note:** Be careful when using bitshift operations. Numbers are represented as [64-bit values](https://es5.github.io/#x4.3.19), but bitshift operations always return a 32-bit integer ([source](https://es5.github.io/#x11.7)). Bitshift can lead to unexpected behavior for integer values larger than 32 bits. [Discussion](https://github.com/airbnb/javascript/issues/109). Largest signed 32-bit Int is 2,147,483,647:
+  - **Note:** Be careful when using bitshift operations. Numbers are represented as [64-bit values](https://es5.github.io/#x4.3.19), but bitshift operations always return a 32-bit integer ([source](https://es5.github.io/#x11.7)). Bitshift can lead to unexpected behavior for integer values larger than 32 bits. [Discussion](https://github.com/airbnb/javascript/issues/109). Largest signed 32-bit Int is 2,147,483,647:
 
     ```javascript
     2147483647 >> 0; // => 2147483647
@@ -2174,8 +1527,7 @@ This document contains guidelines for developers who want to work on the FraGOLE
     2147483649 >> 0; // => -2147483647
     ```
 
-  <a name="coercion--booleans"></a><a name="21.6"></a>
-  - [22.6](#coercion--booleans) Booleans:
+  - Booleans:
 
     ```javascript
     const age = 0;
@@ -2194,7 +1546,6 @@ This document contains guidelines for developers who want to work on the FraGOLE
 
 ## Naming Conventions
 
-  <a name="naming--descriptive"></a><a name="22.1"></a>
   - [23.1](#naming--descriptive) Avoid single letter names. Be descriptive with your naming. eslint: [`id-length`](http://eslint.org/docs/rules/id-length)
 
     ```javascript
@@ -2209,8 +1560,7 @@ This document contains guidelines for developers who want to work on the FraGOLE
     }
     ```
 
-  <a name="naming--camelCase"></a><a name="22.2"></a>
-  - [23.2](#naming--camelCase) Use camelCase when naming objects, functions, and instances. eslint: [`camelcase`](http://eslint.org/docs/rules/camelcase.html) jscs: [`requireCamelCaseOrUpperCaseIdentifiers`](http://jscs.info/rule/requireCamelCaseOrUpperCaseIdentifiers)
+  - Use camelCase when naming objects, functions, and instances. eslint: [`camelcase`](http://eslint.org/docs/rules/camelcase.html) 
 
     ```javascript
     // bad
@@ -2223,8 +1573,7 @@ This document contains guidelines for developers who want to work on the FraGOLE
     function thisIsMyFunction() {}
     ```
 
-  <a name="naming--PascalCase"></a><a name="22.3"></a>
-  - [23.3](#naming--PascalCase) Use PascalCase only when naming constructors or classes. eslint: [`new-cap`](http://eslint.org/docs/rules/new-cap.html) jscs: [`requireCapitalizedConstructors`](http://jscs.info/rule/requireCapitalizedConstructors)
+  - Use PascalCase only when naming constructors or classes. eslint: [`new-cap`](http://eslint.org/docs/rules/new-cap.html) 
 
     ```javascript
     // bad
@@ -2248,23 +1597,7 @@ This document contains guidelines for developers who want to work on the FraGOLE
     });
     ```
 
-  <a name="naming--leading-underscore"></a><a name="22.4"></a>
-  - [23.4](#naming--leading-underscore) Do not use trailing or leading underscores. eslint: [`no-underscore-dangle`](http://eslint.org/docs/rules/no-underscore-dangle.html) jscs: [`disallowDanglingUnderscores`](http://jscs.info/rule/disallowDanglingUnderscores)
-
-    > Why? JavaScript does not have the concept of privacy in terms of properties or methods. Although a leading underscore is a common convention to mean “private”, in fact, these properties are fully public, and as such, are part of your public API contract. This convention might lead developers to wrongly think that a change won’t count as breaking, or that tests aren’t needed. tl;dr: if you want something to be “private”, it must not be observably present.
-
-    ```javascript
-    // bad
-    this.__firstName__ = 'Panda';
-    this.firstName_ = 'Panda';
-    this._firstName = 'Panda';
-
-    // good
-    this.firstName = 'Panda';
-    ```
-
-  <a name="naming--self-this"></a><a name="22.5"></a>
-  - [23.5](#naming--self-this) Don’t save references to `this`. Use arrow functions or [Function#bind](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/bind). jscs: [`disallowNodeTypes`](http://jscs.info/rule/disallowNodeTypes)
+  - Try to avoid references to `this`. Use arrow functions or [Function#bind](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/bind).
 
     ```javascript
     // bad
@@ -2291,105 +1624,13 @@ This document contains guidelines for developers who want to work on the FraGOLE
     }
     ```
 
-  <a name="naming--filename-matches-export"></a><a name="22.6"></a>
-  - [23.6](#naming--filename-matches-export) A base filename should exactly match the name of its default export.
-
-    ```javascript
-    // file 1 contents
-    class CheckBox {
-      // ...
-    }
-    export default CheckBox;
-
-    // file 2 contents
-    export default function fortyTwo() { return 42; }
-
-    // file 3 contents
-    export default function insideDirectory() {}
-
-    // in some other file
-    // bad
-    import CheckBox from './checkBox'; // PascalCase import/export, camelCase filename
-    import FortyTwo from './FortyTwo'; // PascalCase import/filename, camelCase export
-    import InsideDirectory from './InsideDirectory'; // PascalCase import/filename, camelCase export
-
-    // bad
-    import CheckBox from './check_box'; // PascalCase import/export, snake_case filename
-    import forty_two from './forty_two'; // snake_case import/filename, camelCase export
-    import inside_directory from './inside_directory'; // snake_case import, camelCase export
-    import index from './inside_directory/index'; // requiring the index file explicitly
-    import insideDirectory from './insideDirectory/index'; // requiring the index file explicitly
-
-    // good
-    import CheckBox from './CheckBox'; // PascalCase export/import/filename
-    import fortyTwo from './fortyTwo'; // camelCase export/import/filename
-    import insideDirectory from './insideDirectory'; // camelCase export/import/directory name/implicit "index"
-    // ^ supports both insideDirectory.js and insideDirectory/index.js
-    ```
-
-  <a name="naming--camelCase-default-export"></a><a name="22.7"></a>
-  - [23.7](#naming--camelCase-default-export) Use camelCase when you export-default a function. Your filename should be identical to your function’s name.
-
-    ```javascript
-    function makeStyleGuide() {
-      // ...
-    }
-
-    export default makeStyleGuide;
-    ```
-
-  <a name="naming--PascalCase-singleton"></a><a name="22.8"></a>
-  - [23.8](#naming--PascalCase-singleton) Use PascalCase when you export a constructor / class / singleton / function library / bare object.
-
-    ```javascript
-    const AirbnbStyleGuide = {
-      es6: {
-      },
-    };
-
-    export default AirbnbStyleGuide;
-    ```
-
-  <a name="naming--Acronyms-and-Initialisms"></a>
-  - [23.9](#naming--Acronyms-and-Initialisms) Acronyms and initialisms should always be all capitalized, or all lowercased.
-
-    > Why? Names are for readability, not to appease a computer algorithm.
-
-    ```javascript
-    // bad
-    import SmsContainer from './containers/SmsContainer';
-
-    // bad
-    const HttpRequests = [
-      // ...
-    ];
-
-    // good
-    import SMSContainer from './containers/SMSContainer';
-
-    // good
-    const HTTPRequests = [
-      // ...
-    ];
-
-    // best
-    import TextMessageContainer from './containers/TextMessageContainer';
-
-    // best
-    const Requests = [
-      // ...
-    ];
-    ```
-
 **[⬆ back to top](#table-of-contents)**
 
 ## Accessors
 
-  <a name="accessors--not-required"></a><a name="23.1"></a>
-  - [24.1](#accessors--not-required) Accessor functions for properties are not required.
+  - Accessor functions for properties are not required.
 
-  <a name="accessors--no-getters-setters"></a><a name="23.2"></a>
-  - [24.2](#accessors--no-getters-setters) Do not use JavaScript getters/setters as they cause unexpected side effects and are harder to test, maintain, and reason about. Instead, if you do make accessor functions, use getVal() and setVal('hello').
+  - Do not use JavaScript getters/setters as they cause unexpected side effects and are harder to test, maintain, and reason about. Instead, if you do make accessor functions, use getVal() and setVal('hello').
 
     ```javascript
     // bad
@@ -2415,23 +1656,7 @@ This document contains guidelines for developers who want to work on the FraGOLE
     }
     ```
 
-  <a name="accessors--boolean-prefix"></a><a name="23.3"></a>
-  - [24.3](#accessors--boolean-prefix) If the property/method is a `boolean`, use `isVal()` or `hasVal()`.
-
-    ```javascript
-    // bad
-    if (!dragon.age()) {
-      return false;
-    }
-
-    // good
-    if (!dragon.hasAge()) {
-      return false;
-    }
-    ```
-
-  <a name="accessors--consistent"></a><a name="23.4"></a>
-  - [24.4](#accessors--consistent) It’s okay to create get() and set() functions, but be consistent.
+  - It’s okay to create get() and set() functions, but be consistent.
 
     ```javascript
     class Jedi {
@@ -2454,8 +1679,7 @@ This document contains guidelines for developers who want to work on the FraGOLE
 
 ## Events
 
-  <a name="events--hash"></a><a name="24.1"></a>
-  - [25.1](#events--hash) When attaching data payloads to events (whether DOM events or something more proprietary like Backbone events), pass a hash instead of a raw value. This allows a subsequent contributor to add more data to the event payload without finding and updating every handler for the event. For example, instead of:
+  - When attaching data payloads to events (whether DOM events or something more proprietary like Backbone events), pass a hash instead of a raw value. This allows a subsequent contributor to add more data to the event payload without finding and updating every handler for the event. For example, instead of:
 
     ```javascript
     // bad
@@ -2511,29 +1735,6 @@ This document contains guidelines for developers who want to work on the FraGOLE
         'background-color': 'pink',
       });
     }
-    ```
-
-  <a name="jquery--queries"></a><a name="25.3"></a>
-  - [26.3](#jquery--queries) For DOM queries use Cascading `$('.sidebar ul')` or parent > child `$('.sidebar > ul')`. [jsPerf](http://jsperf.com/jquery-find-vs-context-sel/16)
-
-  <a name="jquery--find"></a><a name="25.4"></a>
-  - [26.4](#jquery--find) Use `find` with scoped jQuery object queries.
-
-    ```javascript
-    // bad
-    $('ul', '.sidebar').hide();
-
-    // bad
-    $('.sidebar').find('ul').hide();
-
-    // good
-    $('.sidebar ul').hide();
-
-    // good
-    $('.sidebar > ul').hide();
-
-    // good
-    $sidebar.find('ul').hide();
     ```
 
 ## License
