@@ -1177,7 +1177,7 @@ This document contains guidelines for developers who want to work on the FraGOLE
   
     > Why? Because! Do not start a discussion. There are plenty of arguments for 4 spaces and for 2 spaces. My hope is that 4 spaces enforce a bit more discipline when it comes to avoid deep nesting.
 
-```javascript
+    ```javascript
     // good
     function baz() {
     ∙∙∙∙let name;
