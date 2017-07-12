@@ -16,7 +16,6 @@ This document contains guidelines for developers who want to work on the FraGOLE
   1. [Arrow Functions](#arrow-functions)
   1. [Classes & Constructors](#classes--constructors)
   1. [Modules](#modules)
-  1. [Iterators and Generators](#iterators-and-generators)
   1. [Properties](#properties)
   1. [Variables](#variables)
   1. [Hoisting](#hoisting)
